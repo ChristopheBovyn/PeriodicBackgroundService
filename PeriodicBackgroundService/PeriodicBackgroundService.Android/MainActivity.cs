@@ -21,12 +21,12 @@ namespace PeriodicBackgroundService.Android
 			// Get our button from the layout resource,
 			// and attach an event to it
 			Button button = FindViewById<Button>(Resource.Id.myButton);
-			
+
 			button.Click += delegate
 			{
 				button.Text = string.Format("{0} clicks!", count++);
 			};
-					
+
 			SetAlarmForBackgroundServices(this);
 		}
 
@@ -38,7 +38,7 @@ namespace PeriodicBackgroundService.Android
 			{
 				var pendingIntent = PendingIntent.GetBroadcast(context.ApplicationContext, 0, alarmIntent, 0);
 				var alarmManager = (AlarmManager)context.GetSystemService(Context.AlarmService);
-				alarmManager.SetRepeating(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime(), 15000, pendingIntent);
+				alarmManager.SetRepeating(AlarmType.ElapsedRealtimeWakeup, 300, 10000, pendingIntent);
 			}
 		}
 	}
